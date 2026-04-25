@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — UniPulse | 25-26J-154</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    .contact-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .contact-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+    }
+
+    .contact-header p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .contact-form {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      display: flex;
+      gap: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .info-card-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .info-card-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .info-card-content p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .info-card-content a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .info-card-content a:hover {
+      color: #764ba2;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #1a1a1a;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #999;
+    }
+
+    .form-error {
+      color: #dc3545;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .form-group.error input,
+    .form-group.error textarea {
+      border-color: #dc3545;
+    }
+
+    .form-group.error .form-error {
+      display: block;
+    }
+
+    .form-group.success input,
+    .form-group.success textarea {
+      border-color: #28a745;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-message {
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .form-message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+
+    .form-message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+
+    .team-section {
+      background: white;
+      padding: 60px 0;
+    }
+
+    .team-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .team-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .team-card {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .team-card-avatar {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      margin: 0 auto 15px;
+    }
+
+    .team-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .team-card p {
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .team-card .role {
+      font-size: 0.9rem;
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .team-contact-link {
+      display: inline-block;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .team-contact-link:hover {
+      color: #764ba2;
+    }
+
+    @media (max-width: 768px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .contact-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 25px;
+      }
+
+      .info-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .info-card-icon {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scroll-progress"></div>
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <span class="logo-text">Uni<span>Pulse</span></span>
+        <span class="project-id">25-26J-154</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="domain.html">Domain</a></li>
+        <li><a href="milestones.html">Milestones</a></li>
+        <li><a href="documents.html">Documents</a></li>
+        <li><a href="slides.html">Slides</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+        <li class="nav-search-container">
+          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
+          <div id="searchResults" class="search-results"></div>
+        </li>
+      </ul>
+      <div class="nav-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-icon"><i class="fa-regular fa-envelope"></i></div>
+      <h1>Contact Us</h1>
+      <p>Get in touch with the UniPulse research team at SLIIT.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-header">
+        <h2>Get in Touch</h2>
+        <p>Have questions about UniPulse? We'd love to hear from you. Send us a message and we'll respond as soon as
+          possible.</p>
+      </div>
+
+      <div class="contact-content">
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <div id="formMessage" class="form-message"></div>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+              <div class="form-error">Please enter your name</div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+              <div class="form-error">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(+94) 123-456-7890">
+              <div class="form-error">Please enter a valid phone number</div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+              <div class="form-error">Please enter a subject</div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Tell us more about your inquiry..."
+                required></textarea>
+              <div class="form-error">Please enter your message</div>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message <i class="fa-solid fa-paper-plane"
+                style="margin-left: 8px;"></i></button>
+          </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+
+
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="info-card-content">
+              <h3>Email</h3>
+              <p><a href="mailto:unipulse@gmail.lk">unipulse@gmail.lk</a></p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="info-card-content">
+              <h3>Phone</h3>
+              <p><a href="tel:+94112768400">(+94) 77 491 3328</a></p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="contact-container">
+      <div class="team-header">
+        <h2>Meet the UniPulse Team</h2>
+        <p>Get to know the supervisors guiding the UniPulse research and development project.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-card-avatar"><i class="fa-solid fa-user"></i></div>
+          <h3>Ms. Narmada Gamage</h3>
+          <div class="role">Senior Supervisor</div>
+          <p>Leading the project with expertise in AI and social integration platforms.</p>
+          <a href="mailto:narmada@sliit.lk" class="team-contact-link"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-avatar"><i class="fa-solid fa-user"></i></div>
+          <h3>Ms. Chathurangika Kahandawarachchi</h3>
+          <div class="role">Co-Supervisor</div>
+          <p>Supporting the development and ensuring project excellence throughout the journey.</p>
+          <a href="mailto:chathurangika@sliit.lk" class="team-contact-link"><i class="fa-solid fa-envelope"></i>
+            Email</a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-avatar"><i class="fa-solid fa-users"></i></div>
+          <h3>UniPulse Development Team</h3>
+          <div class="role">Project Team</div>
+          <p>A dedicated team of researchers and developers working on the UniPulse platform (25-26J-154).</p>
+          <a href="mailto:unipulse@sliit.lk" class="team-contact-link"><i class="fa-solid fa-envelope"></i> Email
+            Team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="UP.jpg" alt="UniPulse Logo" class="footer-logo-img">
+          <div class="logo-text">Uni<span>Pulse</span></div>
+          <p>AI-Based Social Integration and Inclusion Platform for University Freshers.<br />Project ID: 25-26J-154
+            &nbsp;&bull;&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;&bull;&nbsp; 2025–2026</p>
+        </div>
+        <div class="footer-col">
+          <h4><i class="fa-solid fa-link"></i> Navigation</h4>
+          <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="domain.html"><i class="fa-solid fa-magnifying-glass"></i> Domain</a>
+          <a href="milestones.html"><i class="fa-regular fa-calendar-check"></i> Milestones</a>
+          <a href="documents.html"><i class="fa-solid fa-file-lines"></i> Documents</a>
+          <a href="slides.html"><i class="fa-solid fa-display"></i> Slides</a>
+          <a href="about.html"><i class="fa-solid fa-users"></i> About Us</a>
+          <a href="contact.html"><i class="fa-regular fa-envelope"></i> Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4><i class="fa-solid fa-user-tie"></i> Supervisors</h4>
+          <a href="#"><i class="fa-solid fa-chevron-right"></i> Ms. Narmada Gamage</a>
+          <a href="#"><i class="fa-solid fa-chevron-right"></i> Ms. Chathurangika Kahandawarachchi</a>
+          <h4 style="margin-top:20px;"><i class="fa-solid fa-building-columns"></i> Institution</h4>
+          <a href="#"><i class="fa-solid fa-location-dot"></i> SLIIT, Malabe, Sri Lanka</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025–2026 UniPulse Research Team &mdash; Project 25-26J-154</span>
+        <span>Sri Lanka Institute of Information Technology</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Contact Form Validation and Handling
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Reset message
+      formMessage.className = 'form-message';
+      formMessage.textContent = '';
+
+      // Get form values
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // Reset error states
+      document.querySelectorAll('.form-group').forEach(group => {
+        group.classList.remove('error', 'success');
+      });
+
+      let isValid = true;
+
+      // Validation
+      if (!name) {
+        addError('name');
+        isValid = false;
+      }
+
+      if (!email || !isValidEmail(email)) {
+        addError('email');
+        isValid = false;
+      }
+
+      if (phone && !isValidPhone(phone)) {
+        addError('phone');
+        isValid = false;
+      }
+
+      if (!subject) {
+        addError('subject');
+        isValid = false;
+      }
+
+      if (!message) {
+        addError('message');
+        isValid = false;
+      }
+
+      if (!isValid) {
+        formMessage.className = 'form-message error';
+        formMessage.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please fill in all required fields correctly.';
+        return;
+      }
+
+      // Store form data
+      const formData = {
+        name: name,
+        email: email,
+        phone: phone,
+        subject: subject,
+        message: message,
+        timestamp: new Date().toLocaleString()
+      };
+
+      // Save to localStorage for demonstration
+      let submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+      submissions.push(formData);
+      localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+
+      // Show success message
+      formMessage.className = 'form-message success';
+      formMessage.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you! Your message has been sent successfully. We will get back to you soon.';
+
+      // Mark fields as success
+      document.getElementById('name').classList.add('success');
+      document.getElementById('email').classList.add('success');
+      document.getElementById('subject').classList.add('success');
+      document.getElementById('message').classList.add('success');
+
+      // Reset form after 2 seconds
+      setTimeout(() => {
+        contactForm.reset();
+        document.querySelectorAll('.form-group').forEach(group => {
+          group.classList.remove('success');
+        });
+        formMessage.className = 'form-message';
+        formMessage.textContent = '';
+      }, 2000);
+
+      console.log('Form Data:', formData);
+    });
+
+    // Helper function to validate email
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Helper function to validate phone
+    function isValidPhone(phone) {
+      const phoneRegex = /^[0-9\s\-\+\(\)]+$/;
+      return phoneRegex.test(phone) && phone.length >= 10;
+    }
+
+    // Helper function to add error to field
+    function addError(fieldId) {
+      const field = document.getElementById(fieldId);
+      if (field) {
+        field.closest('.form-group').classList.add('error');
+      }
+    }
+
+    // Add focus event listeners for real-time validation
+    document.getElementById('email').addEventListener('blur', function () {
+      if (this.value && !isValidEmail(this.value)) {
+        this.closest('.form-group').classList.add('error');
+      } else if (this.value) {
+        this.closest('.form-group').classList.remove('error');
+      }
+    });
+
+    document.getElementById('phone').addEventListener('blur', function () {
+      if (this.value && !isValidPhone(this.value)) {
+        this.closest('.form-group').classList.add('error');
+      } else if (this.value) {
+        this.closest('.form-group').classList.remove('error');
+      }
+    });
+  </script>
+</body>
+
+</html>

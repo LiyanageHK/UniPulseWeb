@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniPulse — Research Domain | AI for Student Wellbeing</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Override container for domain content */
+    .domain-content .container {
+      max-width: 1280px !important;
+      width: 100% !important;
+      padding: 0 2rem !important;
+      margin: 0 auto !important;
+    }
+
+    .domain-content {
+      padding: 4rem 0 5rem !important;
+      background: linear-gradient(180deg, #f9fafb 0%, #f5f7fb 100%) !important;
+    }
+
+    /* Grid layout for cards */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    /* Domain card styling */
+    .domain-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid #edf2f7;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .domain-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #4f46e5, #06b6d4, #8b5cf6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .domain-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.15);
+      border-color: #c7d2fe;
+    }
+
+    .domain-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Card header */
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #eef2ff;
+      padding-bottom: 1rem;
+    }
+
+    .card-header i {
+      font-size: 1.8rem;
+      color: white;
+      background: linear-gradient(135deg, #4f46e5, #3b82f6);
+      padding: 12px 14px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .domain-card:hover .card-header i {
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+    }
+
+    .card-header h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #0f172a, #4f46e5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 0;
+    }
+
+    /* Card content styling */
+    .domain-card p,
+    .domain-card li {
+      color: #1e293b;
+      margin-bottom: 0.6rem;
+      line-height: 1.7;
+    }
+
+    .domain-card ul {
+      padding-left: 1.6rem;
+      margin: 0.8rem 0;
+      list-style: none;
+    }
+
+    .domain-card ul li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .domain-card ul li:before {
+      content: '✓';
+      position: absolute;
+      left: -1.6rem;
+      color: #4f46e5;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .domain-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 1.2rem 0 0.5rem;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Badge styling */
+    .badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .badge {
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    }
+
+    /* Statistics cards */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: 1.5rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid #e2e8f0;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(79, 70, 229, 0.15);
+      border-color: #4f46e5;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #4f46e5, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Objectives wrapper */
+    .objectives-wrapper {
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #eef2ff, #f3f4f6);
+      border-radius: 1rem;
+      border-left: 4px solid #4f46e5;
+      margin-bottom: 1rem;
+    }
+
+    /* Technology table */
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #f8fafc;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+    }
+
+    .tech-table th,
+    .tech-table td {
+      padding: 1.1rem 1.2rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+      transition: all 0.2s ease;
+    }
+
+    .tech-table th {
+      background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+      font-weight: 700;
+      color: #1e40af;
+      letter-spacing: 0.3px;
+      border-bottom: 2px solid #c7d2fe;
+    }
+
+    .tech-table tbody tr:hover {
+      background: #f1f5f9;
+    }
+
+    .tech-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tech-table td strong {
+      color: #4f46e5;
+    }
+
+    /* Full width card */
+    .full-width {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #fafbfc 0%, #f3f4f6 100%);
+    }
+
+    /* Ensure proper spacing for text inside cards */
+    .domain-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Responsive fixes */
+    @media (max-width: 900px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+
+      .full-width {
+        grid-column: span 1;
+      }
+
+      .stat-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .domain-content .container {
+        padding: 0 1.2rem !important;
+      }
+
+      .card-header h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scroll-progress"></div>
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <img src="UP.jpg" alt="UniPulse Logo" class="logo-img">
+        <div>
+          <span class="logo-text">Uni<span>Pulse</span></span>
+          <span class="project-id">25-26J-154</span>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="domain.html" class="active">Domain</a></li>
+        <li><a href="milestones.html">Milestones</a></li>
+        <li><a href="documents.html">Documents</a></li>
+        <li><a href="slides.html">Slides</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li class="nav-search-container">
+          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
+          <div id="searchResults" class="search-results"></div>
+        </li>
+      </ul>
+      <div class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <h1>Research Domain</h1>
+      <p>AI-driven social integration & wellbeing for university freshers — bridging emotional support, peer connection,
+        and proactive risk detection.</p>
+    </div>
+  </section>
+
+  <!-- DOMAIN CONTENT SECTION -->
+  <section class="domain-content">
+    <div class="container">
+      <div class="grid-2col">
+
+        <!-- Literature Survey Card -->
+        <div class="domain-card">
+          <div class="card-header">
+            <i class="fa-solid fa-book-open"></i>
+            <h2>Literature Survey</h2>
+          </div>
+          <p><strong>University freshers face emotional, social, and academic challenges during their transition to
+              higher education.</strong></p>
+          <div class="stat-cards">
+            <div class="stat-item"><span class="stat-number">38%</span><span class="stat-label">Experience
+                anxiety</span></div>
+            <div class="stat-item"><span class="stat-number">34%</span><span class="stat-label">Report depression</span>
+            </div>
+            <div class="stat-item"><span class="stat-number">65%</span><span class="stat-label">Social isolation</span>
+            </div>
+          </div>
+          <p><strong>Traditional support systems</strong> like counseling and mentoring are often reactive and limited.
+          </p>
+          <p>Recent AI tools focus mainly on academic performance or mental health, rarely integrating emotional
+            wellbeing, social engagement, and peer relationships. Research highlights <em>peer connections as key to
+              reducing dropout rates</em>, but current systems remain fragmented.</p>
+        </div>
+
+        <!-- Research Gap Card -->
+        <div class="domain-card">
+          <div class="card-header">
+            <i class="fa-solid fa-chart-line"></i>
+            <h2>Research Gap</h2>
+          </div>
+          <p>Existing AI solutions have critical gaps:</p>
+          <ul>
+            <li><strong>Emotional and social neglect</strong> – Focus on academics only</li>
+            <li><strong>Standalone tools</strong> – Lack integration and holistic support</li>
+            <li><strong>Static profiling</strong> – No dynamic student understanding</li>
+            <li><strong>No continuous monitoring</strong> – Limited real-time risk detection</li>
+          </ul>
+          <div class="badge-list">
+            <span class="badge" style="background: #fee2e2; color: #991b1b;">Fragmented systems</span>
+            <span class="badge" style="background: #fef3c7; color: #92400e;">Static profiling</span>
+            <span class="badge" style="background: #dcfce7; color: #166534;">No real-time adaptation</span>
+          </div>
+        </div>
+
+        <!-- Research Problem Card -->
+        <div class="domain-card">
+          <div class="card-header">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <h2>Research Problem</h2>
+          </div>
+          <p><strong>Freshers struggle with:</strong></p>
+          <ul>
+            <li>Social integration and loneliness</li>
+            <li>Emotional stress and mental health challenges</li>
+            <li>Academic pressure and disengagement</li>
+          </ul>
+          <p><strong>Current barriers:</strong> Support systems are reactive and fragmented, leading to:</p>
+          <div style="padding-left: 1.6rem;">
+            <p>⚠️ Loneliness and social disconnection</p>
+            <p>📉 Disengagement from academics</p>
+            <p>❌ Mental health deterioration affecting success</p>
+          </div>
+        </div>
+
+        <!-- Research Objectives Card -->
+        <div class="domain-card">
+          <div class="card-header">
+            <i class="fa-solid fa-bullseye"></i>
+            <h2>Research Objectives</h2>
+          </div>
+          <div class="objectives-wrapper">
+            <div style="background: white; padding: 1rem; border-radius: 0.8rem; border-left: 3px solid #4f46e5;">
+              <h3 style="color: #4f46e5; margin-bottom: 0.8rem;">🎯 Main Objective</h3>
+              <p style="font-size: 1rem; line-height: 1.6;">To design and develop an <strong>AI-based platform</strong>
+                that supports freshers through <strong>social integration</strong>, <strong>emotional
+                  wellbeing</strong>, and <strong>early risk detection</strong>.</p>
+            </div>
+          </div>
+          <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">📋 Specific Objectives</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="padding: 0.8rem 0; border-left: 3px solid #4f46e5; padding-left: 1rem;"><strong> Adaptive student
+                profiling</strong> – Understand student dynamics continuously</li>
+            <li style="padding: 0.8rem 0; border-left: 3px solid #06b6d4; padding-left: 1rem;"><strong> AI-based risk
+                detection</strong> – Identify at-risk students early</li>
+            <li style="padding: 0.8rem 0; border-left: 3px solid #8b5cf6; padding-left: 1rem;"><strong> Intelligent peer
+                matching</strong> – Foster meaningful connections</li>
+            <li style="padding: 0.8rem 0; border-left: 3px solid #10b981; padding-left: 1rem;"><strong> AI
+                conversational support</strong> – Provide empathetic assistance 24/7</li>
+            <li style="padding: 0.8rem 0; border-left: 3px solid #f59e0b; padding-left: 1rem;"><strong> Platform
+                effectiveness evaluation</strong> – Measure real-world impact</li>
+          </ul>
+        </div>
+
+        <!-- Methodology Card -->
+        <div class="domain-card full-width">
+          <div class="card-header">
+            <i class="fa-solid fa-microchip"></i>
+            <h2>Methodology</h2>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.2rem;">
+            <div>
+              <h3>📊 Data Collection</h3>
+              <p>Data from <strong>120 first-year students</strong> via <strong>weekly check-ins</strong> informed
+                UniPulse development. Structured surveys capture emotional states, stress levels, social interactions,
+                academic comfort, and wellbeing metrics.</p>
+            </div>
+            <div>
+              <h3>🎓 Four Core Modules</h3>
+              <ul>
+                <li><strong>Adaptive Profiling</strong> – Dynamic student understanding</li>
+                <li><strong>Risk Detection</strong> – Early warning system</li>
+                <li><strong>Conversational Support</strong> – AI-powered assistant</li>
+                <li><strong>Peer Matching</strong> – Intelligent connections</li>
+              </ul>
+            </div>
+            <div>
+              <h3>🔧 Backend Stack</h3>
+              <ul>
+                <li><strong>Framework:</strong> Laravel 11</li>
+                <li><strong>Database:</strong> MySQL</li>
+                <li><strong>Version Control:</strong> Git/GitHub</li>
+              </ul>
+            </div>
+            <div>
+              <h3>🤖 AI Technologies</h3>
+              <ul>
+                <li><strong>Machine Learning:</strong> Random Forest, K-Means Clustering</li>
+                <li><strong>NLP:</strong> RoBERTa </li>
+                <li><strong>LLM Integration:</strong> OpenAI API</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technologies Table Card -->
+        <div class="domain-card full-width">
+          <div class="card-header">
+            <i class="fa-solid fa-laptop-code"></i>
+            <h2>Technologies Used</h2>
+          </div>
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Technology / Approach</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Backend</strong></td>
+                <td>Laravel 11, MySQL, Git/GitHub</td>
+              </tr>
+              <tr>
+                <td><strong>Machine Learning</strong></td>
+                <td>Random Forest, K-Means Clustering</td>
+              </tr>
+              <tr>
+                <td><strong>NLP</strong></td>
+                <td>RoBERTa for sentiment analysis</td>
+              </tr>
+              <tr>
+                <td><strong>LLM Integration</strong></td>
+                <td>OpenAI API for conversational support</td>
+              </tr>
+              <tr>
+                <td><strong>Data Processing</strong></td>
+                <td>Weekly assessment collection, real-time profile updates, trend analysis</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="badge-list" style="margin-top: 1rem;">
+            <span class="badge">Laravel 11</span>
+            <span class="badge">MySQL</span>
+            <span class="badge">Random Forest</span>
+            <span class="badge">K-Means</span>
+            <span class="badge">RoBERTa</span>
+            <span class="badge">OpenAI API</span>
+            <span class="badge">Git/GitHub</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER  -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="UP.jpg" alt="UniPulse Logo" class="footer-logo-img">
+          <div class="logo-text">Uni<span>Pulse</span></div>
+          <p>AI-Based Social Integration and Inclusion Platform for University Freshers.<br />Project ID: 25-26J-154
+            &nbsp;•&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;•&nbsp; 2025–2026</p>
+        </div>
+        <div class="footer-col">
+          <h4><i class="fa-solid fa-link"></i> Navigation</h4>
+          <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="domain.html"><i class="fa-solid fa-magnifying-glass"></i> Domain</a>
+          <a href="milestones.html"><i class="fa-regular fa-calendar-check"></i> Milestones</a>
+          <a href="documents.html"><i class="fa-solid fa-file-lines"></i> Documents</a>
+          <a href="slides.html"><i class="fa-solid fa-display"></i> Slides</a>
+          <a href="about.html"><i class="fa-solid fa-users"></i> About Us</a>
+          <a href="contact.html"><i class="fa-regular fa-envelope"></i> Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4><i class="fa-solid fa-user-tie"></i> Supervisors</h4>
+          <a href="#"><i class="fa-solid fa-chevron-right"></i> Ms. Narmada Gamage</a>
+          <a href="#"><i class="fa-solid fa-chevron-right"></i> Ms. Chathurangika Kahandawarachchi</a>
+          <h4 style="margin-top:20px;"><i class="fa-solid fa-building-columns"></i> Institution</h4>
+          <a href="#"><i class="fa-solid fa-location-dot"></i> SLIIT, Malabe, Sri Lanka</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025–2026 UniPulse Research Team — Project 25-26J-154</span>
+        <span>Sri Lanka Institute of Information Technology</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Additional script for domain card animations
+    const cards = document.querySelectorAll('.domain-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach((card, idx) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(24px)';
+      card.style.transition = opacity 0.4s cubic - bezier(0.2, 0.9, 0.4, 1.1) ${ idx * 0.05 } s, transform 0.4s ease;
+      observer.observe(card);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milestones — UniPulse | 25-26J-154</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .milestone-section {
+      padding: 80px 0 100px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+    }
+
+    .timeline-wrapper {
+      position: relative;
+      margin-top: 52px;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50px;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, #2563eb, #60a5fa, #3b82f6);
+      border-radius: 999px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+      margin-left: 120px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: attr(data-number);
+      position: absolute;
+      left: -90px;
+      top: 20px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+      z-index: 10;
+      border: 4px solid white;
+    }
+
+    .timeline-item:nth-child(2n)::before {
+      background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+    }
+
+    .timeline-item:nth-child(3n)::before {
+      background: linear-gradient(135deg, #1e40af, #1e3a8a);
+    }
+
+    .timeline-item:nth-child(4n)::before {
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    }
+
+    .timeline-card {
+      background: var(--white);
+      border: 2px solid var(--border-soft);
+      border-radius: 28px;
+      padding: 32px 32px;
+      box-shadow: 0 4px 16px rgba(30, 58, 138, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.04), rgba(96, 165, 250, 0.08));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.18);
+      border-color: #2563eb;
+    }
+
+    .timeline-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #1e40af;
+    }
+
+    .timeline-item:nth-child(2n) .card-icon {
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
+      color: #0369a1;
+    }
+
+    .timeline-item:nth-child(3n) .card-icon {
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      color: #1e40af;
+    }
+
+    .timeline-item:nth-child(4n) .card-icon {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      color: #6b21a8;
+    }
+
+    .card-content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding: 6px 12px;
+      background: #eff6ff;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    .timeline-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--dark);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .timeline-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .timeline-badge {
+      position: absolute;
+      top: -14px;
+      right: 28px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      white-space: normal;
+      z-index: 15;
+      max-width: 180px;
+      word-wrap: break-word;
+      line-height: 1.2;
+    }
+
+    .badge-alt {
+      background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+    }
+
+    .mark-allocation {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-top: 8px;
+      width: fit-content;
+    }
+
+    @media (max-width: 1024px) {
+      .timeline::before {
+        left: 32px;
+      }
+
+      .timeline-item {
+        margin-left: 100px;
+      }
+
+      .timeline-item::before {
+        left: -68px;
+        width: 48px;
+        height: 48px;
+        font-size: 1rem;
+      }
+
+      .timeline-card {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        margin-left: 80px;
+        margin-bottom: 32px;
+      }
+
+      .timeline-item::before {
+        left: -56px;
+        width: 42px;
+        height: 42px;
+        font-size: 0.9rem;
+        border-width: 3px;
+        top: 16px;
+      }
+
+      .timeline-card {
+        padding: 24px 20px;
+        gap: 14px;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+        border-radius: 10px;
+      }
+
+      .timeline-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .timeline-date {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+      }
+
+      .timeline-badge {
+        right: 16px;
+        top: -10px;
+        font-size: 0.6rem;
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scroll-progress"></div>
+  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <span class="logo-text">Uni<span>Pulse</span></span>
+        <span class="project-id">25-26J-154</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="domain.html">Domain</a></li>
+        <li><a href="milestones.html" class="active">Milestones</a></li>
+        <li><a href="documents.html">Documents</a></li>
+        <li><a href="slides.html">Slides</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li class="nav-search-container">
+          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
+          <div id="searchResults" class="search-results"></div>
+        </li>
+      </ul>
+      <div class="nav-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-icon"><i class="fa-regular fa-calendar-check"></i></div>
+      <h1>Milestones</h1>
+      <p>Track the key deliverables and progress checkpoints of the UniPulse project throughout 2025–2026.</p>
+    </div>
+  </section>
+
+  <section class="milestone-section">
+    <div class="container">
+      <h2 class="section-title">Project Milestones</h2>
+      <p class="section-subtitle">A polished timeline of every milestone, from proposal planning to final thesis
+        submission.</p>
+
+      <div class="timeline-wrapper stagger-children">
+        <div class="timeline">
+
+          <article class="timeline-item" data-number="01">
+            <span class="timeline-badge">TAF</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 25th June 2025</div>
+                <h3>TAF</h3>
+                <p>Team allocation and final assessment framework established to guide the completion phase.</p>
+
+              </div>
+            </div>
+          </article>
+
+
+          <article class="timeline-item" data-number="02">
+            <span class="timeline-badge badge-alt">Project Proposal Presentation</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 29th August 2025</div>
+                <h3>Project Proposal Presentation</h3>
+                <p>Formal presentation of the project concept, scope, and research approach to supervisors.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 6%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="03">
+            <span class="timeline-badge">Project Proposal</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 31st August 2025</div>
+                <h3>Project Proposal</h3>
+                <p>Submitted the project proposal document outlining objectives, methodology, and deliverables.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 6%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="04">
+            <span class="timeline-badge badge-alt">Progress Presentation 1</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 5th January 2026</div>
+                <h3>Progress Presentation 1</h3>
+                <p>First progress review showcasing initial development, research findings and next steps.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 15%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="05">
+            <span class="timeline-badge">Progress Presentation 2</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 11th March 2026</div>
+                <h3>Progress Presentation 2</h3>
+                <p>Second progress review sharing updated results, prototypes and planned refinements.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 18%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="06">
+            <span class="timeline-badge badge-alt">Website Submission</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 26th April 2026</div>
+                <h3>Website Submission</h3>
+                <p>Submitted the project website for evaluation, representing the completed online deliverable.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 2%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="07">
+            <span class="timeline-badge">Final Presentation and Viva</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-star"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 27th April 2026</div>
+                <h3>Final Presentation and Viva</h3>
+                <p>Delivered the final project presentation and viva voce to complete the evaluation process.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 20%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="08">
+            <span class="timeline-badge badge-alt">Logbook Submission</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-book"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 27th April 2026</div>
+                <h3>Logbook Submission</h3>
+                <p>Submitted the project logbook capturing progress, reflections, and development records.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 2%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="09">
+            <span class="timeline-badge">Final Checklist Submission</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 30th April 2026</div>
+                <h3>Final Checklist Submission</h3>
+                <p>Delivered the completed project checklist confirming all required documentation and tasks.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 2%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="10">
+            <span class="timeline-badge badge-alt">Research Paper Submission</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-newspaper"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 8th May 2026</div>
+                <h3>Research Paper Submission</h3>
+                <p>Submitted the research paper to document findings and support the academic contribution.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 10%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="11">
+            <span class="timeline-badge">Final Thesis Submission</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 13th May 2026</div>
+                <h3>Final Thesis Submission</h3>
+                <p>Submitted the final thesis documenting the full project, research, design, and technical work.</p>
+                <div class="mark-allocation">📊 Mark Allocation: 19%</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-number="12">
+            <span class="timeline-badge badge-alt">Research Paper Publication Evidence</span>
+            <div class="timeline-card">
+              <div class="card-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div class="card-content">
+                <div class="timeline-date">📅 15th May 2026</div>
+                <h3>Research Paper Publication Evidence Submission</h3>
+                <p>Provided evidence of publication to validate the research output and dissemination effort.</p>
+
+              </div>
+            </div>
+          </article>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="UP.jpg" alt="UniPulse Logo" class="footer-logo-img">
+          <div class="logo-text">Uni<span>Pulse</span></div>
+          <p>AI-Based Social Integration and Inclusion Platform for University Freshers.<br />Project ID: 25-26J-154
+            &nbsp;&bull;&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;&bull;&nbsp; 2025–2026</p>
+        </div>
+        <div class="footer-col">
+          <h4><i class="fa-solid fa-link"></i> Navigation</h4>
+          <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="domain.html"><i class="fa-solid fa-magnifying-glass"></i> Domain</a>
+          <a href="milestones.html"><i class="fa-regular fa-calendar-check"></i> Milestones</a>
+          <a href="documents.html"><i class="fa-solid fa-file-lines"></i> Documents</a>
+          <a href="slides.html"><i class="fa-solid fa-display"></i> Slides</a>
+          <a href="about.html"><i class="fa-solid fa-users"></i> About Us</a>
+          <a href="contact.html"><i class="fa-regular fa-envelope"></i> Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4><i class="fa-solid fa-user-tie"></i> Supervisors</h4>
+          <a href="#"><i class="fa-solid fa-chevron-right"></i> Ms. Narmada Gamage</a>
+          <a href="#"><i class="fa-solid fa-chevron-right"></i> Ms. Chathurangika Kahandawarachchi</a>
+          <h4 style="margin-top:20px;"><i class="fa-solid fa-building-columns"></i> Institution</h4>
+          <a href="#"><i class="fa-solid fa-location-dot"></i> SLIIT, Malabe, Sri Lanka</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025–2026 UniPulse Research Team &mdash; Project 25-26J-154</span>
+        <span>Sri Lanka Institute of Information Technology</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
