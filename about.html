@@ -125,7 +125,14 @@
         <li><a href="slides.html">Slides</a></li>
         <li><a href="about.html" class="active">About Us</a></li>
         <li><a href="contact.html">Contact Us</a></li>
+        <li class="nav-search-container">
+          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
+          <div id="searchResults" class="search-results"></div>
+        </li>
       </ul>
+      <div class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </nav>
 
@@ -255,14 +262,17 @@
     </p>
   </section>
 
-  <!-- FOOTER  -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
+          <img src="UP.jpg" alt="UniPulse Logo" class="footer-logo-img">
           <div class="logo-text">Uni<span>Pulse</span></div>
-          <p>AI-Based Social Integration and Inclusion Platform for University Freshers.<br />Project ID: 25-26J-154
-            &nbsp;&bull;&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;&bull;&nbsp; 2025–2026</p>
+          <p>
+            AI-Based Social Integration and Inclusion Platform for University Freshers.<br />
+            Project ID: 25-26J-154 &nbsp;&bull;&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;&bull;&nbsp; 2025–2026
+          </p>
         </div>
         <div class="footer-col">
           <h4><i class="fa-solid fa-link"></i> Navigation</h4>
@@ -273,10 +283,6 @@
           <a href="slides.html"><i class="fa-solid fa-display"></i> Slides</a>
           <a href="about.html"><i class="fa-solid fa-users"></i> About Us</a>
           <a href="contact.html"><i class="fa-regular fa-envelope"></i> Contact Us</a>
-          <li class="nav-search-container">
-            <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
-            <div id="searchResults" class="search-results"></div>
-          </li>
         </div>
         <div class="footer-col">
           <h4><i class="fa-solid fa-user-tie"></i> Supervisors</h4>
@@ -293,6 +299,7 @@
     </div>
   </footer>
 
+  <script src="js/search.js"></script>
   <script src="js/main.js"></script>
 
 </body>
