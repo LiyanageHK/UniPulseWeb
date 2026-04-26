@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
 
   <div class="scroll-progress"></div>
@@ -34,6 +36,10 @@
         <li><a href="slides.html" class="active">Slides</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact Us</a></li>
+        <li class="nav-search-container">
+          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
+          <div id="searchResults" class="search-results"></div>
+        </li>
       </ul>
 
       <div class="nav-toggle"><span></span><span></span><span></span></div>
@@ -180,12 +186,13 @@
   </section>
 
   <!-- FOOTER -->
- <footer>
+  <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo-text">Uni<span>Pulse</span></div>
-          <p>AI-Based Social Integration and Inclusion Platform for University Freshers.<br/>Project ID: 25-26J-154 &nbsp;&bull;&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;&bull;&nbsp; 2025–2026</p>
+          <p>AI-Based Social Integration and Inclusion Platform for University Freshers.<br />Project ID: 25-26J-154
+            &nbsp;&bull;&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;&bull;&nbsp; 2025–2026</p>
         </div>
         <div class="footer-col">
           <h4><i class="fa-solid fa-link"></i> Navigation</h4>
@@ -215,4 +222,5 @@
   <script src="js/main.js"></script>
 
 </body>
+
 </html>
