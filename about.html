@@ -1,62 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us — UniPulse | 25-26J-154</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us — UniPulse | 25-26J-154</title>
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+
+/* ===== TEAM SECTION ===== */
+.team-section {
+  padding: 40px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+
+.team-grid:first-of-type {
+  grid-template-columns: repeat(2, 260px);
+  justify-content: center;
+}
+
+
+.team-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.team-card img {
+  width: 100%;
+  height: 280px;              
+  object-fit: cover;
+  object-position: top;       
+}
+
+.team-content {
+  padding: 15px;
+}
+
+.role {
+  display: inline-block;
+  background: #e6f0ff;
+  color: #007bff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+.social-links a {
+  margin: 5px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* ===== ACHIEVEMENT ===== */
+.achievement-section {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.achievement-section img {
+  display: block;
+  margin: 20px auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .team-grid:first-of-type {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <div class="scroll-progress"></div>
-  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+<div class="scroll-progress"></div>
+<button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button>
 
-  <nav class="navbar">
-    <div class="container">
-      <div class="nav-brand">
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-brand">
+      <img src="UP.jpg" alt="UniPulse Logo" class="logo-img">
+      <div>
         <span class="logo-text">Uni<span>Pulse</span></span>
         <span class="project-id">25-26J-154</span>
       </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="domain.html">Domain</a></li>
-        <li><a href="milestones.html">Milestones</a></li>
-        <li><a href="documents.html">Documents</a></li>
-        <li><a href="slides.html">Slides</a></li>
-        <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li class="nav-search-container">
-          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
-          <div id="searchResults" class="search-results"></div>
-        </li>
-      </ul>
-      <div class="nav-toggle"><span></span><span></span><span></span></div>
     </div>
-  </nav>
-
-  <section class="page-hero">
-    <div class="container">
-      <div class="page-hero-icon"><i class="fa-solid fa-users"></i></div>
-      <h1>About Us</h1>
-      <p>Meet the team behind UniPulse — Information Systems Engineering undergraduates at SLIIT.</p>
-    </div>
-  </section>
-
-  <div class="placeholder-section">
-    <div class="placeholder-icon-wrap"><i class="fa-solid fa-id-card"></i></div>
-    <h2>About Us Coming Soon</h2>
-    <p>Detailed team profiles, individual research contributions, and supervisor bios will be featured here.</p>
-    <a href="index.html" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="domain.html">Domain</a></li>
+      <li><a href="milestones.html">Milestones</a></li>
+      <li><a href="documents.html">Documents</a></li>
+      <li><a href="slides.html">Slides</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
   </div>
+</nav>
 
-  <footer>
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-icon"><i class="fa-solid fa-users"></i></div>
+    <h1>About Us</h1>
+    <p>Meet the team behind UniPulse — Information Systems Engineering undergraduates at SLIIT.</p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section container">
+
+<h2 class="section-title">Meet Our Team</h2>
+
+<!-- ROW 1 -->
+<div class="team-grid">
+
+<div class="team-card">
+  <img src="images/Narmada.jpg">
+  <div class="team-content">
+    <h3>Ms. Narmada Gamage</h3>
+    <span class="role">Supervisor</span>
+    <p>SLIIT</p>
+    <p><strong>Department:</strong> Information Systems Engineering</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/narmada-dushmanthi" target="_blank">LinkedIn</a>
+      <a href="mailto:test@my.sliit.lk">Email</a>
+    </div>
+  </div>
+</div>
+
+<div class="team-card">
+  <img src="images/chathurangika.jpg">
+  <div class="team-content">
+    <h3>Ms. Chathurangika Kahandawarachchi</h3>
+    <span class="role">Co-Supervisor</span>
+    <p>SLIIT</p>
+    <p><strong>Department:</strong> Information Systems Engineering</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/chathurangika-kahandawaarachchi-441ab8178" target="_blank">LinkedIn</a>
+      <a href="mailto:test@my.sliit.lk">Email</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ROW 2 -->
+<div class="team-grid">
+
+<div class="team-card">
+  <img src="images/member1.jpg">
+  <div class="team-content">
+    <h3>Liyanage H. K</h3>
+    <span class="role">Group Leader</span>
+    <p>Undergraduate</p>
+    <p>SLIIT</p>
+    <p><strong>Department:</strong> Information Systems Engineering</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/hiruni-liyanage-696290233" target="_blank">LinkedIn</a>
+      <a href="mailto:test@my.sliit.lk">Email</a>
+    </div>
+  </div>
+</div>
+
+<div class="team-card">
+  <img src="images/member2.jpg">
+  <div class="team-content">
+    <h3>Pathiraja H. N</h3>
+    <span class="role">Group Member</span>
+    <p>Undergraduate</p>
+    <p>SLIIT</p>
+    <p><strong>Department:</strong> Information Systems Engineering</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/hirushima-pathiraja-b54312300" target="_blank">LinkedIn</a>
+      <a href="mailto:test@my.sliit.lk">Email</a>
+    </div>
+  </div>
+</div>
+
+<div class="team-card">
+  <img src="images/member3.jpg">
+  <div class="team-content">
+    <h3>Fonseka W. A. N. P</h3>
+    <span class="role">Group Member</span>
+    <p>Undergraduate</p>
+    <p>SLIIT</p>
+    <p><strong>Department:</strong> Information Systems Engineering</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/piumi-fonseka" target="_blank">LinkedIn</a>
+      <a href="mailto:test@my.sliit.lk">Email</a>
+    </div>
+  </div>
+</div>
+
+<div class="team-card">
+  <img src="images/member4.jpg">
+  <div class="team-content">
+    <h3>Poornima M.P.H</h3>
+    <span class="role">Group Member</span>
+    <p>Undergraduate</p>
+    <p>SLIIT</p>
+    <p><strong>Department:</strong> Information Systems Engineering</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/hiruni-poornima-0b6700317" target="_blank">LinkedIn</a>
+      <a href="mailto:test@my.sliit.lk">Email</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievement-section container">
+  <h2 class="section-title">Achievements</h2>
+  <img src="images/achievement.jpg">
+  <p>
+    Best Project Award – ISE Project Showcase 2025<br>
+Awarded the Best Project Award at the ISE Project Showcase 2025 for developing the Restaurant Management System. This recognition reflects excellence in teamwork, innovation, and dedication to creating an effective and practical solution.
+  </p>
+</section>
+
+<!-- FOOTER  -->
+<footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="UP.jpg" alt="UniPulse Logo" class="footer-logo-img">
           <div class="logo-text">Uni<span>Pulse</span></div>
           <p>AI-Based Social Integration and Inclusion Platform for University Freshers.<br/>Project ID: 25-26J-154 &nbsp;&bull;&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;&bull;&nbsp; 2025–2026</p>
         </div>
@@ -85,7 +287,7 @@
     </div>
   </footer>
 
-  <script src="js/search.js"></script>
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
+
 </body>
 </html>

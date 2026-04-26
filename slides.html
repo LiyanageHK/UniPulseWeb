@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slides — UniPulse | 25-26J-154</title>
+
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -12,14 +13,19 @@
 <body>
 
   <div class="scroll-progress"></div>
-  <button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
       <div class="nav-brand">
-        <span class="logo-text">Uni<span>Pulse</span></span>
-        <span class="project-id">25-26J-154</span>
+        <img src="UP.jpg" alt="UniPulse Logo" class="logo-img">
+        <div>
+          <span class="logo-text">Uni<span>Pulse</span></span>
+          <span class="project-id">25-26J-154</span>
+        </div>
       </div>
+
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="domain.html">Domain</a></li>
@@ -28,35 +34,156 @@
         <li><a href="slides.html" class="active">Slides</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact Us</a></li>
-        <li class="nav-search-container">
-          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
-          <div id="searchResults" class="search-results"></div>
-        </li>
       </ul>
+
       <div class="nav-toggle"><span></span><span></span><span></span></div>
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="page-hero">
     <div class="container">
-      <div class="page-hero-icon"><i class="fa-solid fa-display"></i></div>
+      <div class="page-hero-icon">
+        <i class="fa-solid fa-display"></i>
+      </div>
       <h1>Presentation Slides</h1>
-      <p>Slide decks from past presentations — proposal defence, progress reviews, and final viva.</p>
+      <p>All presentation slide decks for UniPulse — proposal, progress, and final evaluations.</p>
     </div>
   </section>
 
-  <div class="placeholder-section">
-    <div class="placeholder-icon-wrap"><i class="fa-solid fa-person-chalkboard"></i></div>
-    <h2>Slides Coming Soon</h2>
-    <p>Presentation slides for all defence and progress review sessions will be uploaded here as they become available.</p>
-    <a href="index.html" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
-  </div>
+  <!-- SLIDES SECTION -->
+  <section class="section">
+    <div class="container">
 
-  <footer>
+      <div class="doc-section-header fade-up">
+        <div class="doc-section-icon">
+          <i class="fa-solid fa-display"></i>
+        </div>
+        <div>
+          <h3>Available Presentations <span>— 4 files</span></h3>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+
+        <!-- Proposal -->
+        <div class="doc-card fade-up">
+          <span class="doc-badge badge-proposal">
+            <i class="fa-solid fa-person-chalkboard"></i> Proposal
+          </span>
+
+          <div class="doc-file-icon file-orange">
+            <i class="fa-solid fa-file-powerpoint"></i>
+          </div>
+
+          <h3>Proposal Presentation</h3>
+          <p>Initial project proposal presentation covering idea, objectives, and methodology.</p>
+
+          <div class="doc-meta">
+            <i class="fa-regular fa-calendar"></i> 2025
+          </div>
+
+          <div class="doc-actions">
+            <a href="https://canva.link/kpx2p4evljetxns" target="_blank" class="btn-sm btn-sm-primary">
+              <i class="fa-regular fa-eye"></i> View
+            </a>
+            <a href="https://canva.link/kpx2p4evljetxns" download class="btn-sm btn-sm-outline">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </div>
+        </div>
+
+        <!-- Progress 1 -->
+        <div class="doc-card fade-up">
+          <span class="doc-badge badge-paper">
+            <i class="fa-solid fa-chart-line"></i> Progress I
+          </span>
+
+          <div class="doc-file-icon file-orange">
+            <i class="fa-solid fa-file-powerpoint"></i>
+          </div>
+
+          <h3>Progress Presentation I</h3>
+          <p>Mid-project progress including system design and early implementation.</p>
+
+          <div class="doc-meta">
+            <i class="fa-regular fa-calendar"></i> 2026
+          </div>
+
+          <div class="doc-actions">
+            <a href="https://canva.link/nref99337kdkj20" target="_blank" class="btn-sm btn-sm-primary">
+              <i class="fa-regular fa-eye"></i> View
+            </a>
+            <a href="https://canva.link/nref99337kdkj20" download class="btn-sm btn-sm-outline">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </div>
+        </div>
+
+        <!-- Progress 2 -->
+        <div class="doc-card fade-up">
+          <span class="doc-badge badge-paper">
+            <i class="fa-solid fa-chart-line"></i> Progress II
+          </span>
+
+          <div class="doc-file-icon file-orange">
+            <i class="fa-solid fa-file-powerpoint"></i>
+          </div>
+
+          <h3>Progress Presentation II</h3>
+          <p>Advanced progress with testing results and improvements.</p>
+
+          <div class="doc-meta">
+            <i class="fa-regular fa-calendar"></i> 2026
+          </div>
+
+          <div class="doc-actions">
+            <a href="https://canva.link/5suwslfvo8y4hph" target="_blank" class="btn-sm btn-sm-primary">
+              <i class="fa-regular fa-eye"></i> View
+            </a>
+            <a href="https://canva.link/5suwslfvo8y4hph" download class="btn-sm btn-sm-outline">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </div>
+        </div>
+
+        <!-- Final -->
+        <div class="doc-card fade-up">
+          <span class="doc-badge badge-final">
+            <i class="fa-solid fa-award"></i> Final
+          </span>
+
+          <div class="doc-file-icon file-orange">
+            <i class="fa-solid fa-file-powerpoint"></i>
+          </div>
+
+          <h3>Final Presentation</h3>
+          <p>Final viva presentation including complete system, results, and conclusion.</p>
+
+          <div class="doc-meta">
+            <i class="fa-regular fa-calendar"></i> 2026
+          </div>
+
+          <div class="doc-actions">
+            <a href="slides/final.pptx" target="_blank" class="btn-sm btn-sm-primary">
+              <i class="fa-regular fa-eye"></i> View
+            </a>
+            <a href="slides/final.pptx" download class="btn-sm btn-sm-outline">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+ <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="UP.jpg" alt="UniPulse Logo" class="footer-logo-img">
           <div class="logo-text">Uni<span>Pulse</span></div>
           <p>AI-Based Social Integration and Inclusion Platform for University Freshers.<br/>Project ID: 25-26J-154 &nbsp;&bull;&nbsp; SLIIT, Malabe, Sri Lanka &nbsp;&bull;&nbsp; 2025–2026</p>
         </div>
@@ -85,7 +212,7 @@
     </div>
   </footer>
 
-  <script src="js/search.js"></script>
   <script src="js/main.js"></script>
+
 </body>
 </html>
